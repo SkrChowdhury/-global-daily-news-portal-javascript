@@ -1,0 +1,9 @@
+#catagories li:hover a {
+    background-color: black;
+    color: aliceblue;
+}
+
+#catagories li  {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
