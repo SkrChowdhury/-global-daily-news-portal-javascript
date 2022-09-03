@@ -85,27 +85,42 @@ const displayNews = (newsCards) => {
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title text-danger fw-bold" id="staticBackdropLabel">${
+                              <h5 class="card-title text-danger fw-bold">${
                                 card.title
                               }</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                               <div>
-
                               <img
-                        class="rounded-circle w-25 h-25"
-                        src="${card.author.img}"
-                        alt=""
-                      />
+                                class=" w-100 img-fluid"
+                                src="${card.image_url}"
+                                alt=""
+                              />
+                              <div class="my-3 row ">
+                              <div class="col-6">
+                              <img style =" width: 50%;"
+                                class=" img-fluid rounded-circle col-6"
+                                src="${card.author.img}"
+                                alt=""
+                              />
+                              </div>
+                              <div class="col-6 align-self-center">
+                              <p class=" mb-0">${card.author.name}</p>
+                              <p class="mb-0">${card.author.published_date}</p>
+                              </div>
+                              </div>
+                              <div>
+                              <p> ${card.details}</p>
+                              </div>
                               </div>
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-danger rounded-pill" data-bs-dismiss="modal">Close</button>
                             </div>
                           </div>
-  </div>
-</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -117,7 +132,7 @@ const displayNews = (newsCards) => {
     cardContainer.appendChild(cardDiv);
 
     const newsCountText = document.getElementById('news-count');
-    newsCountText.innerText = `${newsCards.length} items found for the category `;
+    newsCountText.innerText = `${newsCards.length} items found for the category`;
   });
   //stop spinner
   toggleSpinner(false);
