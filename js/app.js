@@ -19,6 +19,7 @@ const displayCategories = (categories) => {
               >${category.category_name}</a
         >
     `;
+
     categoriesContainer.appendChild(categoriesLi);
   });
 };
@@ -34,6 +35,11 @@ const loadNews = (category_id) => {
 
 const displayNews = (newsCards) => {
   toggleSpinner(true);
+  // sort by value
+  newsCards.sort(function (a, b) {
+    return b.total_view - a.total_view;
+  });
+
   const cardContainer = document.getElementById('card-container');
   cardContainer.innerHTML = ``;
 
@@ -104,10 +110,14 @@ const displayNews = (newsCards) => {
     cardContainer.appendChild(cardDiv);
 
     const newsCountText = document.getElementById('news-count');
-    newsCountText.innerText = `${newsCards.length} items found for the category`;
+    newsCountText.innerText = `${newsCards.length} items found for this category`;
   });
   //stop spinner
   toggleSpinner(false);
+
+  newsCards.sort((a, b) => {
+    return a.total_view - b.total_view;
+  });
 };
 
 // Display News Details in a Modal
@@ -120,7 +130,7 @@ const loadModal = (news_id) => {
 };
 
 const displayModal = (modal) => {
-  console.log(modal);
+  console.log(modal)
   const modalContainer = document.getElementById('modal-container');
   modalContainer.innerHTML = `
     <div class="modal-content">
