@@ -20,6 +20,7 @@
     <title>Global Daily</title>
   </head>
   <body class="bg-light">
+
     <header class="container">
       <nav class="navbar navbar-expand-lg navbar-light bg-light mt-2">
         <div class="container-fluid d-lg-flex justify-content-between">
@@ -48,14 +49,14 @@
             <ul class="navbar-nav flex align-content-center">
               <li class="nav-item align-self-lg-center">
                 <a
-                  class="nav-link active text-danger fw-bolder"
+                  class="nav-link"
                   aria-current="page"
-                  href="#"
+                  href="index.html"
                   >Home</a
                 >
               </li>
               <li class="nav-item align-self-lg-center">
-                <a class="nav-link" href="#">Blog</a>
+                <a class="nav-link active text-danger fw-bolder border-bottom border-danger rounded " href="blog.html">Blog</a>
               </li>
               <li class="nav-item text-center">
                 <a class="nav-link" href="#">
@@ -71,46 +72,92 @@
         </div>
       </nav>
 
-      <section class="bg-danger rounded-pill">
-        <ul
-          id="catagories-container"
-          class="nav justify-content-center mx-5 text-center"
-        ></ul>
-      </section>
-
-      <section>
-        <div
-          class="alert alert-danger rounded-pill mt-3 fw-bold text-black"
-          role="alert"
-        >
-          <p class="mb-0" id="news-count"></p>
-        </div>
-      </section>
     </header>
 
-    <main class="container">
-      <!-- news card section  -->
-      <section>
-        <div id="card-container"></div>
-      </section>
 
-      <!-- spinner section  -->
-      <section>
-        <div
-          id="loader"
-          style="height: 400px"
-          class="d-flex justify-content-center align-items-center d-none"
-        >
-          <div
-            class="spinner-grow text-danger"
-            style="width: 3rem; height: 3rem"
-            role="status"
-          >
-            <span class="visually-hidden">Loading...</span>
-          </div>
-        </div>
-      </section>
     </main>
+
+    <section class="container">
+        <h2 class="text-danger fw-bolder text-center border border-danger p-3 my-4 rounded-pill
+        ">OUR BLOGS</h2>
+    </section>
+
+
+    <section class="container">
+
+        <div class="row p-2 shadow-lg rounded justify-content-between my-3">
+            <h3 class="text-center">1. Difference between var, let and const</h3>
+            <div class="col-12 col-lg-6 p-4">
+                
+                <p class="text-"><b>let:</b> The let keyword declares a block-scoped local variable, optionally initializing it to a value.
+                Block-scoped means that the variable is only available within the block it was declared in, which is usually denoted by curly braces {}.</p>
+              
+                <p>
+                <b>var:</b> The var keyword declares a function-scoped or global variable, optionally initializing it to a value.
+                Function-scoped means that the variable is only available within the function it was declared in. Global variables are available throughout your entire code.
+                </p>
+
+                <p><b>const:</b> The const keyword declares a block-scoped, immutable constant variable, i.e. a variable that can’t be reassigned.
+                Constants are also called “immutable variables”, but that’s a bit of a misnomer since they are actually variables – just ones that can’t be reassigned.</p>
+                
+                </p>
+            </div>
+                <div class="col-12 col-lg-6 align-self-center text-center">
+                    <img class=" w-100 img-fluid rounded mb-4 " src="images/var-let-const.png" alt="">
+                </div>
+        </div>
+
+        <div class="row p-2 shadow-lg rounded justify-content-between my-5">
+            <h3 class="text-center">2. Difference between Arrow Function & Regular Function</h3>
+
+            <div class="col-12 col-lg-6 align-self-center text-center">
+                <img class=" w-100 img-fluid rounded mb-4 " src="images/arrow-regular.jpeg" alt="">
+            </div>
+            <div class="col-12 col-lg-6 p-4">
+                
+                <p class="text-"><b>Syntax:</b> One very basic difference is that the Regular Functions uses function keyword but Arrow Functions don’t inspite it uses arrow symbol(=>).</p>
+              
+                <p>
+                <b>this keyword:</b> Regular function have its their own this context, but the Arrow function don’t have their own. Inside an Arrow function this value hold the this value of outer function.
+                </p>
+
+                <p><b>Using new keyword:</b> Regular function are constructible and callable.As it are constructible, they can be called using the ‘new’ keyword. But the arrow functions are only callable and not constructible. Due to which we will get a run-time error when trying to construct a non-constructible arrow functions using the new keyword.</p>
+                
+                </p>
+            </div>
+
+        </div>
+
+
+
+
+
+                <div class="row p-2 shadow-lg rounded justify-content-between my-3">
+            <h3 class="text-center">3. Difference between map(), forEach(), filter() and find()</h3>
+            <div class="col-12 col-lg-6 p-4">
+                
+                <p class="text-"><b>map():</b> executes the same code on every element in an array and returns a new array with the updated elements.</p>
+              
+                <p>
+                <b>forEach():</b> is used to execute the same code on every element in an array but does not change the array and it returns undefined.
+                </p>
+
+                <p><b>filter():</b> checks every element in an array to see if it meets a certain criteria and returns a new array with the elements that return truthy for the criteria.</p>
+
+                <p><b>find()):</b> returns the first element in the provided array that satisfies the provided testing function. If no values satisfy the testing function, undefined is returned.</p>
+                
+                </p>
+            </div>
+                <div class="col-12 col-lg-6 align-self-center text-center">
+                    <img class=" w-100 img-fluid rounded mb-4 " src="images/var-let-const.png" alt="">
+                </div>
+        </div>
+
+        
+
+
+        
+    </section>
 
     <footer class="bg-danger rounded-top container-fluid">
       <p class="text-center text-white fw-bold p-4">
@@ -125,12 +172,11 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Fontawesome  -->
+    <!-- Font awesome  -->
     <script
       src="https://kit.fontawesome.com/b733db707b.js"
       crossorigin="anonymous"
     ></script>
 
-    <script src="js/app.js"></script>
   </body>
 </html>
