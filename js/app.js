@@ -4,7 +4,8 @@ const loadCategories = () => {
   const url = `https://openapi.programming-hero.com/api/news/categories`;
   fetch(url)
     .then((response) => response.json())
-    .then((data) => displayCategories(data.data.news_category));
+    .then((data) => displayCategories(data.data.news_category))
+    .catch((error) => console.log(error));
 };
 
 const displayCategories = (categories) => {
@@ -27,7 +28,8 @@ const loadNews = (category_id) => {
   const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
   fetch(url)
     .then((response) => response.json())
-    .then((data) => displayNews(data.data));
+    .then((data) => displayNews(data.data))
+    .catch((error) => console.log(error));
 };
 
 const displayNews = (newsCards) => {
@@ -38,7 +40,8 @@ const displayNews = (newsCards) => {
   newsCards.forEach((card) => {
     const cardDiv = document.createElement('div');
     cardDiv.innerHTML = `
-        <div class="card mb-3 shadow-lg rounded">
+
+ <div class="card mb-3 shadow-lg rounded">
             <div class="row g-0">
               <div class="col-md-4">
                 <img src="${
@@ -62,13 +65,19 @@ const displayNews = (newsCards) => {
                         src="${card.author.img}"
                         alt=""
                       />
-                      <p class="mb-0 mx-2">${card.author.name}</p>
+                      <p class="mb-0 mx-2">${
+                        card.author.name ? card.author.name : 'No Author Found'
+                      }</p>
                     </div>
                     <div
                       class="d-flex justify-content-center align-items-center"
                     >
                       <i class="fa-solid fa-eye"></i>
-                      <p class="mb-0 mx-2">${card.total_view}</p>
+                      <p class="mb-0 mx-2">${
+                        card.total_view
+                          ? card.total_view
+                          : 'No Rating Available'
+                      }</p>
                     </div>
                     <div class="d-none d-lg-block">
                       <i class="fa-solid fa-star-half-stroke"></i>
@@ -77,56 +86,19 @@ const displayNews = (newsCards) => {
                       <i class="fa-regular fa-star"></i>
                       <i class="fa-regular fa-star"></i>
                     </div>
+
                     <div>
-                      <button class="btn btn-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        Details
-                      </button>
-                      <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="card-title text-danger fw-bold">${
-                                card.title
-                              }</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              <div>
-                              <img
-                                class=" w-100 img-fluid"
-                                src="${card.image_url}"
-                                alt=""
-                              />
-                              <div class="my-3 row ">
-                              <div class="col-6">
-                              <img style =" width: 50%;"
-                                class=" img-fluid rounded-circle col-6"
-                                src="${card.author.img}"
-                                alt=""
-                              />
-                              </div>
-                              <div class="col-6 align-self-center">
-                              <p class=" mb-0">${card.author.name}</p>
-                              <p class="mb-0">${card.author.published_date}</p>
-                              </div>
-                              </div>
-                              <div>
-                              <p> ${card.details}</p>
-                              </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-danger rounded-pill" data-bs-dismiss="modal">Close</button>
-                            </div>
-                          </div>
-                        </div>
+                        <button
+                        onclick = "loadModal('${card._id}')"
+                        class="btn btn-danger rounded-pi'll" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Details</button>
+
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+              </div>
     `;
 
     cardContainer.appendChild(cardDiv);
@@ -136,6 +108,67 @@ const displayNews = (newsCards) => {
   });
   //stop spinner
   toggleSpinner(false);
+};
+
+// Display News Details in a Modal
+const loadModal = (news_id) => {
+  const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => displayModal(data.data[0]))
+    .catch((error) => console.log(error));
+};
+
+const displayModal = (modal) => {
+  console.log(modal);
+  const modalContainer = document.getElementById('modal-container');
+  modalContainer.innerHTML = `
+    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="card-title text-danger fw-bold">${
+                          modal.title
+                        }</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <img
+                                class=" w-100 img-fluid"
+                                src="${modal.image_url}"
+                                alt=""
+                              />
+                            <div class="my-3 row ">
+                              <div class="col-6">
+                              <img style =" width: 50%;"
+                                class=" img-fluid rounded-circle col-6"
+                                src="${modal.author.img}"
+                                alt=""
+                              />
+
+                              </div>
+                              <div class="col-6 align-self-center">
+                              <p class=" mb-0">${
+                                modal.author.name
+                                  ? modal.author.name
+                                  : 'No Author Found'
+                              }</p>
+                              <p class="mb-0">${modal.author.published_date}</p>
+
+                              </div>
+                              </div>
+                              <div>
+                              <p> ${modal.details}</p>
+                              </div>
+
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-danger rounded-pill" data-bs-dismiss="modal">Close</button>
+                            </div>
+                </div>
+   
+   
+   `;
 };
 
 const toggleSpinner = (isLoading) => {
@@ -148,4 +181,5 @@ const toggleSpinner = (isLoading) => {
 };
 
 loadCategories();
-loadNews();
+loadNews('01');
+loadModal();
