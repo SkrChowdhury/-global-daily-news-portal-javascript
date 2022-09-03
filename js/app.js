@@ -34,6 +34,8 @@ const loadNews = (category_id) => {
 };
 
 const displayNews = (newsCards) => {
+  //Show Spinner
+  toggleSpinner(true);
   // sort by value
   newsCards.sort(function (a, b) {
     return b.total_view - a.total_view;
@@ -119,8 +121,6 @@ const displayNews = (newsCards) => {
 
 // Display News Details in a Modal
 const loadModal = (news_id) => {
-  //Show Spinner
-  toggleSpinner(true);
   const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
   fetch(url)
     .then((response) => response.json())
