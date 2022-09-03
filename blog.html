@@ -58,7 +58,7 @@
               <li class="nav-item align-self-lg-center">
                 <a class="nav-link active text-danger fw-bolder border-bottom border-danger rounded " href="blog.html">Blog</a>
               </li>
-              <li class="nav-item text-center">
+              <li class="nav-item text-center d-none d-lg-block">
                 <a class="nav-link" href="#">
                   <img
                     class="w-50 h-50 rounded-circle"
@@ -86,10 +86,10 @@
     <section class="container">
 
         <div class="row p-2 shadow-lg rounded justify-content-between my-3">
-            <h3 class="text-center">1. Difference between var, let and const</h3>
+            <h3 class="text-center mb-4">1. Difference between var, let and const</h3>
             <div class="col-12 col-lg-6 p-4">
                 
-                <p class="text-"><b>let:</b> The let keyword declares a block-scoped local variable, optionally initializing it to a value.
+                <p><b>let:</b> The let keyword declares a block-scoped local variable, optionally initializing it to a value.
                 Block-scoped means that the variable is only available within the block it was declared in, which is usually denoted by curly braces {}.</p>
               
                 <p>
@@ -108,14 +108,14 @@
         </div>
 
         <div class="row p-2 shadow-lg rounded justify-content-between my-5">
-            <h3 class="text-center">2. Difference between Arrow Function & Regular Function</h3>
+            <h3 class="text-center mb-4">2. Difference between Arrow Function & Regular Function</h3>
 
             <div class="col-12 col-lg-6 align-self-center text-center">
                 <img class=" w-100 img-fluid rounded mb-4 " src="images/arrow-regular.jpeg" alt="">
             </div>
             <div class="col-12 col-lg-6 p-4">
                 
-                <p class="text-"><b>Syntax:</b> One very basic difference is that the Regular Functions uses function keyword but Arrow Functions don’t inspite it uses arrow symbol(=>).</p>
+                <p><b>Syntax:</b> One very basic difference is that the Regular Functions uses function keyword but Arrow Functions don’t inspite it uses arrow symbol(=>).</p>
               
                 <p>
                 <b>this keyword:</b> Regular function have its their own this context, but the Arrow function don’t have their own. Inside an Arrow function this value hold the this value of outer function.
@@ -133,10 +133,10 @@
 
 
                 <div class="row p-2 shadow-lg rounded justify-content-between my-3">
-            <h3 class="text-center">3. Difference between map(), forEach(), filter() and find()</h3>
+            <h3 class="text-center mb-4">3. Difference between map(), forEach(), filter() and find()</h3>
             <div class="col-12 col-lg-6 p-4">
                 
-                <p class="text-"><b>map():</b> executes the same code on every element in an array and returns a new array with the updated elements.</p>
+                <p><b>map():</b> executes the same code on every element in an array and returns a new array with the updated elements.</p>
               
                 <p>
                 <b>forEach():</b> is used to execute the same code on every element in an array but does not change the array and it returns undefined.
@@ -149,8 +149,37 @@
                 </p>
             </div>
                 <div class="col-12 col-lg-6 align-self-center text-center">
-                    <img class=" w-100 img-fluid rounded mb-4 " src="images/var-let-const.png" alt="">
+                    <img class=" w-100 img-fluid rounded mb-4 " src="images/array-methods.webp" alt="">
                 </div>
+        </div>
+
+
+
+        <div class="row p-2 shadow-lg rounded justify-content-between my-5">
+            <h3 class="text-center mb-4">4. Why do we use template string in Javascript?</h3>
+
+            <div class="col-12 col-lg-6 align-self-center text-center">
+                <img class=" w-100 img-fluid rounded mb-4 " src="images/template-string.webp" alt="">
+            </div>
+            <div class="col-12 col-lg-6 p-4">
+                
+                <p> Template literals (template strings) allow you to use strings or embedded expressions in the form of a string. They are enclosed in backticks (``)</p>
+              
+                <p>
+                <b>Template Literals for Strings:</b> Instead of using escape characters, you can use template literals.
+                </p>
+
+                <p><b>Multiline Strings Using Template Literals:</b> Template literals also make it easy to write multiline strings.</p>
+                </p>
+
+                <p><b>Expression Interpolation:</b> Before JavaScript ES6, you would use the + operator to concatenate variables and expressions in a string.</p>
+                </p>
+
+                
+                <p><b>Tagged Templates:</b> Normally, you would use a function to pass arguments.However, you can create tagged templates (that behave like a function) using template literals. You use tags that allow you to parse template literals with a function.</p>
+                </p>
+            </div>
+
         </div>
 
         
