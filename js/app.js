@@ -34,7 +34,6 @@ const loadNews = (category_id) => {
 };
 
 const displayNews = (newsCards) => {
-  toggleSpinner(true);
   // sort by value
   newsCards.sort(function (a, b) {
     return b.total_view - a.total_view;
@@ -48,11 +47,11 @@ const displayNews = (newsCards) => {
     cardDiv.innerHTML = `
 
  <div class="card mb-3 shadow-lg rounded">
-            <div class="row g-0">
+            <div class="row g-0 p-3">
               <div class="col-md-4">
                 <img src="${
                   card.image_url
-                }" class="img-fluid rounded-5 m-3" alt="..." />
+                }" class="img-fluid rounded-5 h-100" alt="..." />
               </div>
               <div class="col-md-8">
                 <div class="card-body m-3">
@@ -80,9 +79,7 @@ const displayNews = (newsCards) => {
                     >
                       <i class="fa-solid fa-eye"></i>
                       <p class="mb-0 mx-2">${
-                        card.total_view
-                          ? card.total_view
-                          : 'No Rating Available'
+                        card.total_view ? card.total_view : 'No Views Available'
                       }</p>
                     </div>
                     <div class="d-none d-lg-block">
@@ -122,6 +119,8 @@ const displayNews = (newsCards) => {
 
 // Display News Details in a Modal
 const loadModal = (news_id) => {
+  //Show Spinner
+  toggleSpinner(true);
   const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
   fetch(url)
     .then((response) => response.json())
@@ -130,7 +129,6 @@ const loadModal = (news_id) => {
 };
 
 const displayModal = (modal) => {
-  console.log(modal)
   const modalContainer = document.getElementById('modal-container');
   modalContainer.innerHTML = `
     <div class="modal-content">
