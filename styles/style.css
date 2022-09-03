@@ -1,9 +1,9 @@
-#catagories li:hover a {
+#catagories-container li:hover a {
     background-color: black;
     color: aliceblue;
 }
 
-#catagories li  {
+#catagories-container li  {
     margin-top: 5px;
     margin-bottom: 5px;
 }
